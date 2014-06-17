@@ -8,7 +8,7 @@ class Person {
     String lastName
     Integer age
 
-    boolean isAsult() {
+    boolean isAdult() {
         age >= 18
     }
 }

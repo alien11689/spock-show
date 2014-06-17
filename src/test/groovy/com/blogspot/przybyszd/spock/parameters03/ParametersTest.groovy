@@ -52,7 +52,7 @@ class ParametersTest extends Specification {
     @Unroll
     def "should check if person is adult with table"() {
         expect:
-            new Person(age: age).isAsult() == adult
+            new Person(age: age).isAdult() == adult
         where:
             age || adult
             17  || false
@@ -63,7 +63,7 @@ class ParametersTest extends Specification {
     @Unroll
     def "should check if person is adult with list"() {
         expect:
-            new Person(age: age).isAsult() == adult
+            new Person(age: age).isAdult() == adult
             ageSquare == age * age
         where:
             age << [17, 18, 19]
