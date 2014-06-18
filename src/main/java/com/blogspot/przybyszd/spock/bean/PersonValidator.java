@@ -1,7 +1,9 @@
 package com.blogspot.przybyszd.spock.bean;
 
 import com.blogspot.przybyszd.spock.dto.Person;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PersonValidator {
     public void validatePerson(Person person){
         String firstName = person.getFirstName();
