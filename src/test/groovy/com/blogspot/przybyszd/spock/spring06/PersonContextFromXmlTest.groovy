@@ -5,7 +5,6 @@ import com.blogspot.przybyszd.spock.bean.PersonDao
 import com.blogspot.przybyszd.spock.bean.PersonValidationException
 import com.blogspot.przybyszd.spock.dto.Person
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
 import spock.lang.Unroll

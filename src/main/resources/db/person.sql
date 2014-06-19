@@ -1,7 +1,7 @@
-drop table if exists person;
+DROP TABLE IF EXISTS person;
 
-create table person (
-  first_name varchar(256) not null,
-  last_name varchar(256) not null,
-  age int null
+CREATE TABLE person (
+  first_name VARCHAR(256) NOT NULL,
+  last_name  VARCHAR(256) NOT NULL,
+  age        INT          NULL
 );

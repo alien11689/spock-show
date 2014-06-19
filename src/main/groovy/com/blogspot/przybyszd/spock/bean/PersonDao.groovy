@@ -6,8 +6,6 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 
-import java.sql.Types
-
 @Component
 class PersonDao {
     final JdbcTemplate jdbcTemplate
@@ -34,7 +32,7 @@ class PersonDao {
         })
     }
 
-    void close(){
+    void close() {
         println "Closing person dao"
     }
 }
