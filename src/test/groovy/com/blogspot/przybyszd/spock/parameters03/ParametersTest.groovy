@@ -49,6 +49,21 @@ class ParametersTest extends Specification {
             "Kowalski" | "Jan"     | 24
     }
 
+    @Unroll("should set person with #lastName.length(), #firstName.toUpperCase() and #age")
+    def "should set person with lastName, firstName and age 2"() {
+        when:
+            Person person = new Person(lastName: lastName, firstName: firstName, age: age)
+        then:
+            person.firstName == firstName
+            person.lastName == lastName
+            person.age == age
+        where:
+            lastName   | firstName | age
+            "Smith"    | "John"    | 25
+            "Kowalski" | "Jan"     | 24
+
+    }
+
     @Unroll
     def "should check if person is adult with table"() {
         expect:
@@ -58,6 +73,17 @@ class ParametersTest extends Specification {
             17  || false
             18  || true
             19  || true
+    }
+
+    @Unroll
+    def "should check if person with age #person.age is adult => #adult"() {
+        expect:
+            person.isAdult() == adult
+        where:
+            person              || adult
+            new Person(age: 17) || false
+            new Person(age: 18) || true
+            new Person(age: 19) || true
     }
 
     @Unroll
