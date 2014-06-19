@@ -33,4 +33,8 @@ class PersonDao {
             Map row -> new Person(row.first_name, row.last_name, row.age)
         })
     }
+
+    void close(){
+        println "Closing person dao"
+    }
 }
