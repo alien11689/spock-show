@@ -15,14 +15,29 @@ class HelperMethodTest extends Specification {
             result.age == 20
     }
 
-    def "should check person with helper method"() {
+    def "should check person with boolean helper method"() {
         when:
             Person result = new Person("Tom", "Smith", 20)
         then:
             checkPerson(result, "Tom", "Smith", 20)
     }
 
-    void checkPerson(Person person, String firstName, String lastName, int age) {
+    def "should check person with assert helper method"() {
+        when:
+            Person result = new Person("Tom", "Smith", 20)
+        then:
+            checkPersonWithAssert(result, "Tom", "Smith", 20)
+    }
+
+    boolean checkPerson(Person person, String firstName, String lastName, int age) {
+        person != null &&
+                person.firstName == firstName &&
+                person.lastName == lastName &&
+                person.age == age
+    }
+
+
+    void checkPersonWithAssert(Person person, String firstName, String lastName, int age) {
         assert person != null
         assert person.firstName == firstName
         assert person.lastName == lastName
