@@ -34,9 +34,13 @@ class LifecycleSpockTest extends Specification {
     }
 
     def "should check firstName"() {
-        println "should check firstName"
+        setup:
+            println "setup in test"
+            println "should check firstName"
         expect:
             person.firstName == "Tom"
+        cleanup:
+            println "Cleanup after test"
     }
 
     def "should check lastName"() {
