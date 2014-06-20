@@ -29,6 +29,17 @@ class HelperMethodTest extends Specification {
             checkPersonWithAssert(result, "Tom", "Smith", 20)
     }
 
+    def "should set first name, last name and age 1"() {
+        when:
+            Person person = new Person(firstName: "Bob", lastName: "Smith", age: 40)
+        then:
+            with(person) {
+                firstName == "Bob"
+                lastName == "Smith"
+                age == 40
+            }
+    }
+
     boolean checkPerson(Person person, String firstName, String lastName, int age) {
         person != null &&
                 person.firstName == firstName &&
