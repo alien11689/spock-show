@@ -113,6 +113,14 @@ class ParametersTest extends Specification {
     }
 
     @Unroll
+    def "should check if person is adult with list 2"() {
+        expect:
+            new Person(age: age).isAdult() == adult
+        where:
+            [age, adult] << [[17,false], [18,true], [19, true]]
+    }
+
+    @Unroll
     def "should set first name"() {
         when:
             Person person = new Person(firstName: firstName)
