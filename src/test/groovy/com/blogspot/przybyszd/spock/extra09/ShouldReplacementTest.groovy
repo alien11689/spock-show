@@ -5,7 +5,7 @@ import spock.lang.Specification
 import java.lang.Void as Should
 
 
-class ShouldReplacemetTest extends Specification {
+class ShouldReplacementTest extends Specification {
 
     void "should set first name from constructor"() {
         when:
