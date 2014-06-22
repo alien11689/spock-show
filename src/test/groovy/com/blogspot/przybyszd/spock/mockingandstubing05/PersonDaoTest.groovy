@@ -124,6 +124,15 @@ class PersonDaoTest extends Specification {
             sut.findByLastName("Kowalski") == [new Person("Jan", "Kowalski", 20)]
     }
 
+    def "should find one person with stub"() {
+        given:
+            jdbcTemplate = Stub(JdbcTemplate)
+            sut = new PersonDao(jdbcTemplate)
+            jdbcTemplate.queryForList("select first_name, last_name, age from person where last_name = ?", ["Kowalski"]) >> [[first_name: "Jan", last_name: "Kowalski", age: 20]]
+        expect:
+            sut.findByLastName("Kowalski") == [new Person("Jan", "Kowalski", 20)]
+    }
+
     def "should find many times person"() {
         given:
             jdbcTemplate.queryForList(_, _) >> [[first_name: "Jan", last_name: "Kowalski", age: 20]]
