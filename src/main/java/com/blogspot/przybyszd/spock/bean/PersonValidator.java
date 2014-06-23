@@ -17,7 +17,10 @@ public class PersonValidator {
         }
 
         Integer age = person.getAge();
-        if (age == null || age < 0) {
+        if (age == null){
+            throw new PersonValidationException("Age must be given");
+        }
+        if( age < 0) {
             throw new PersonValidationException("Age cannot be negative");
         }
     }
