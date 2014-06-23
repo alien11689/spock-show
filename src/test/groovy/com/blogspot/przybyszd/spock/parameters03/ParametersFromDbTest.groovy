@@ -14,7 +14,7 @@ class ParametersFromDbTest extends Specification {
                         CREATE TABLE person (
                           first_name VARCHAR(256) NOT NULL,
                           last_name  VARCHAR(256) NOT NULL,
-                          age        INT          NULL
+                          age        INT          NOT NULL
                         );""")
         sql.executeInsert("""INSERT INTO person (first_name, last_name, age) VALUES
                                 ('Tom', 'Smith', 24),
