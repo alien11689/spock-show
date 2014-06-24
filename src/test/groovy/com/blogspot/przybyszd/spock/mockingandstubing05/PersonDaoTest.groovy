@@ -117,6 +117,19 @@ class PersonDaoTest extends Specification {
             1 * jdbcTemplate.execute("Insert into person (first_name, last_name, age) values ('Jan', 'Kowalski', 15)")
     }
 
+    def "should persist many persons with mock and its implementation"() {
+        given:
+            jdbcTemplate = Mock(JdbcTemplate) {
+                2 * execute({
+                    String sql -> sql.endsWith("('John', 'Smith', 20)") || sql.endsWith("('Jan', 'Kowalski', 15)")
+                })
+            }
+            sut = new PersonDao(jdbcTemplate)
+            List<Person> persons = [new Person("John", "Smith", 20), new Person("Jan", "Kowalski", 15)]
+        expect:
+            sut.persist(persons)
+    }
+
     def "should find one person"() {
         given:
             jdbcTemplate.queryForList("select first_name, last_name, age from person where last_name = ?", ["Kowalski"]) >> [[first_name: "Jan", last_name: "Kowalski", age: 20]]
@@ -129,6 +142,16 @@ class PersonDaoTest extends Specification {
             jdbcTemplate = Stub(JdbcTemplate)
             sut = new PersonDao(jdbcTemplate)
             jdbcTemplate.queryForList("select first_name, last_name, age from person where last_name = ?", ["Kowalski"]) >> [[first_name: "Jan", last_name: "Kowalski", age: 20]]
+        expect:
+            sut.findByLastName("Kowalski") == [new Person("Jan", "Kowalski", 20)]
+    }
+
+    def "should find one person with stub and implementation inside it"() {
+        given:
+            jdbcTemplate = Stub(JdbcTemplate) {
+                queryForList("select first_name, last_name, age from person where last_name = ?", ["Kowalski"]) >> [[first_name: "Jan", last_name: "Kowalski", age: 20]]
+            }
+            sut = new PersonDao(jdbcTemplate)
         expect:
             sut.findByLastName("Kowalski") == [new Person("Jan", "Kowalski", 20)]
     }
