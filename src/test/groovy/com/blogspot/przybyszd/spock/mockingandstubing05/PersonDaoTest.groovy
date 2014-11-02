@@ -245,4 +245,18 @@ class PersonDaoTest extends Specification {
             result == [new Person("Jan", "Kowalski", 20)]
             1 * jdbcTemplate.queryForList(!null, _) >> [[first_name: "Jan", last_name: "Kowalski", age: 20]]
     }
+
+    def "should find one person and check invocation external with first parameter not null"() {
+        when:
+            List result = sut.findByLastName("Kowalski")
+        then:
+            result == [new Person("Jan", "Kowalski", 20)]
+            interaction {
+                queryForListCalledOnceWithFirstName()
+            }
+    }
+
+    void queryForListCalledOnceWithFirstName(){
+        1 * jdbcTemplate.queryForList(!null, _) >> [[first_name: "Jan", last_name: "Kowalski", age: 20]]
+    }
 }
