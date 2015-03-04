@@ -14,11 +14,11 @@
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <groovy-eclipse-compiler.version>2.8.0-01</groovy-eclipse-compiler.version>
         <groovy-eclipse-batch.version>2.1.8-01</groovy-eclipse-batch.version>
-        <groovy.version>2.3.1</groovy.version>
+        <groovy.version>2.4.0</groovy.version>
         <spring.version>4.0.5.RELEASE</spring.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <h2.version>1.4.178</h2.version>
-        <spock.version>1.0-groovy-2.0-SNAPSHOT</spock.version>
+        <spock.version>1.0-groovy-2.4</spock.version>
         <cglib.version>3.1</cglib.version>
         <objenesis.version>2.1</objenesis.version>
     </properties>
@@ -26,29 +26,32 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
+                <version>3.1</version>
                 <configuration>
-                    <compilerId>groovy-eclipse-compiler</compilerId>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-eclipse-compiler</artifactId>
-                        <version>${groovy-eclipse-compiler.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-eclipse-batch</artifactId>
-                        <version>${groovy-eclipse-batch.version}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.groovy</groupId>
-                <artifactId>groovy-eclipse-compiler</artifactId>
-                <version>${groovy-eclipse-compiler.version}</version>
-                <extensions>true</extensions>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>addSources</goal>
+                            <goal>addTestSources</goal>
+                            <goal>generateStubs</goal>
+                            <goal>compile</goal>
+                            <goal>testGenerateStubs</goal>
+                            <goal>testCompile</goal>
+                            <goal>removeStubs</goal>
+                            <goal>removeTestStubs</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -116,11 +119,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>sonatype-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </repository>
-    </repositories>
 </project>
