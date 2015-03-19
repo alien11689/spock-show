@@ -1,0 +1,43 @@
+apply plugin: 'groovy'
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs = ['src/main/groovy','src/main/java']
+        }
+        java {
+            srcDirs = []
+        }
+    }
+    test {
+        groovy {
+            srcDirs = ['src/test/groovy']
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.0'
+    compile 'org.springframework:spring-jdbc:4.0.5.RELEASE'
+    compile 'org.springframework:spring-beans:4.0.5.RELEASE'
+    compile 'org.springframework:spring-context:4.0.5.RELEASE'
+    compile 'commons-dbcp:commons-dbcp:1.4'
+    compile 'com.h2database:h2:1.4.178'
+
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+    testCompile 'org.spockframework:spock-spring:1.0-groovy-2.4'
+    testCompile 'org.springframework:spring-test:4.0.5.RELEASE'
+    testCompile 'cglib:cglib-nodep:3.1'
+    testCompile 'org.objenesis:objenesis:2.1'
+}
+
+group = 'com.blogspot.przybyszd.spock'
+version = '1.0'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
