@@ -6,22 +6,23 @@ import org.springframework.stereotype.Component;
 @Component
 public class PersonValidator {
     public void validatePerson(Person person) {
-        String firstName = person.getFirstName();
-        if (firstName == null || firstName.length() == 0) {
-            throw new PersonValidationException("First name must be given");
-        }
+        validateNotBlank(person.getFirstName(), "First name must be given");
+        validateNotBlank(person.getLastName(), "Last name must be given");
+        validateAge(person.getAge());
+    }
 
-        String lastName = person.getLastName();
-        if (lastName == null || lastName.length() == 0) {
-            throw new PersonValidationException("Last name must be given");
-        }
-
-        Integer age = person.getAge();
+    private void validateAge(Integer age) {
         if (age == null){
             throw new PersonValidationException("Age must be given");
         }
         if( age < 0) {
             throw new PersonValidationException("Age cannot be negative");
+        }
+    }
+
+    private void validateNotBlank(String firstName, String message) {
+        if (firstName == null || firstName.length() == 0) {
+            throw new PersonValidationException(message);
         }
     }
 }

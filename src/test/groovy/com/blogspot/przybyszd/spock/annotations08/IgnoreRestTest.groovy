@@ -5,18 +5,18 @@ import spock.lang.Specification
 
 class IgnoreRestTest extends Specification {
 
-    def "test 1"() {
+    def 'test 1'() {
         expect:
             1 == 1
     }
 
     @IgnoreRest
-    def "test 2"() {
+    def 'test 2'() {
         expect:
             1 == 1
     }
 
-    def "test 3"() {
+    def 'test 3'() {
         expect:
             1 == 1
     }

@@ -8,9 +8,9 @@ import spock.lang.Subject
 class SubjectTest extends Specification {
 
     @Subject
-    Person person = new Person("John", "Smith", 21)
+    Person person = new Person('John', 'Smith', 21)
 
-    def "should be adult"() {
+    def 'should be adult'() {
         expect:
             person.isAdult()
     }

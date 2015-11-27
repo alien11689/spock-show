@@ -5,37 +5,37 @@ import spock.lang.Specification
 
 class HelperMethodTest extends Specification {
 
-    def "should check person"() {
+    def 'should check person'() {
         when:
-            Person result = new Person("Tom", "Smith", 20)
+            Person result = new Person('Tom', 'Smith', 20)
         then:
             result != null
-            result.firstName == "Tom"
-            result.lastName == "Smith"
+            result.firstName == 'Tom'
+            result.lastName == 'Smith'
             result.age == 20
     }
 
-    def "should check person with boolean helper method"() {
+    def 'should check person with boolean helper method'() {
         when:
-            Person result = new Person("Tom", "Smith", 20)
+            Person result = new Person('Tom', 'Smith', 20)
         then:
-            checkPerson(result, "Tom", "Smith", 20)
+            checkPerson(result, 'Tom', 'Smith', 20)
     }
 
-    def "should check person with assert helper method"() {
+    def 'should check person with assert helper method'() {
         when:
-            Person result = new Person("Tom", "Smith", 20)
+            Person result = new Person('Tom', 'Smith', 20)
         then:
-            checkPersonWithAssert(result, "Tom", "Smith", 20)
+            checkPersonWithAssert(result, 'Tom', 'Smith', 20)
     }
 
-    def "should set first name, last name and age 1"() {
+    def 'should set first name, last name and age 1'() {
         when:
-            Person person = new Person(firstName: "Bob", lastName: "Smith", age: 40)
+            Person person = new Person(firstName: 'Bob', lastName: 'Smith', age: 40)
         then:
             with(person) {
-                firstName == "Bob"
-                lastName == "Smith"
+                firstName == 'Bob'
+                lastName == 'Smith'
                 age == 40
             }
     }

@@ -1,5 +1,4 @@
 package com.blogspot.przybyszd.spock.dto
-
 import groovy.transform.Canonical
 
 @Canonical

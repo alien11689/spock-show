@@ -5,7 +5,7 @@ import spock.util.concurrent.PollingConditions
 
 class PoolingConditionTest extends Specification {
 
-    def "should wait for job done"() {
+    def 'should wait for job done'() {
         given:
             PollingConditions pollingConditions = new PollingConditions(timeout: 5)
             String response = null

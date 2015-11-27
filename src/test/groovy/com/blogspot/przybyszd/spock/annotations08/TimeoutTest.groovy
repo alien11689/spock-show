@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 class TimeoutTest extends Specification {
 
     @Timeout(value = 750, unit = TimeUnit.MILLISECONDS)
-    def "test 1"() {
+    def 'test 1'() {
         expect:
             1 == 1
     }

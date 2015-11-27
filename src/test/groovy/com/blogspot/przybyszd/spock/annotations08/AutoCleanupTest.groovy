@@ -9,10 +9,10 @@ class AutoCleanupTest extends Specification {
 
     JdbcTemplate jdbcTemplate = Mock(JdbcTemplate)
 
-    @AutoCleanup(value = "close", quiet = true)
+    @AutoCleanup(value = 'close', quiet = true)
     PersonDao sut = new PersonDao(jdbcTemplate)
 
-    def "test 1"() {
+    def 'test 1'() {
         expect:
             sut != null
     }

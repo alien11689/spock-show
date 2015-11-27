@@ -7,18 +7,18 @@ import java.lang.Void as Should
 
 class ShouldReplacementTest extends Specification {
 
-    void "should set first name from constructor"() {
+    void 'should set first name from constructor'() {
         when:
-            Person person = new Person(firstName: "Bob")
+            Person person = new Person(firstName: 'Bob')
         then:
-            person.firstName == "Bob"
+            person.firstName == 'Bob'
     }
 
-    Should "set first name from constructor"() {
+    Should 'set first name from constructor'() {
         when:
-            Person person = new Person(firstName: "Bob")
+            Person person = new Person(firstName: 'Bob')
         then:
-            person.firstName == "Bob"
+            person.firstName == 'Bob'
     }
 
 }

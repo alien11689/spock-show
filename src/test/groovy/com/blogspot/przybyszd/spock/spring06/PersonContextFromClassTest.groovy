@@ -19,19 +19,19 @@ class PersonContextFromClassTest extends Specification {
     PersonDao personDao
 
     @Unroll
-    def "should save person and find it"() {
+    def 'should save person and find it'() {
         given:
-            Person person = new Person("Tom", "Smith", 25)
+            Person person = new Person('Tom', 'Smith', 25)
         when:
             personController.addPerson(person)
         then:
-            personDao.findByLastName("Smith") == [person]
+            personDao.findByLastName('Smith') == [person]
     }
 
     @Unroll
-    def "should not save person because of validation"() {
+    def 'should not save person because of validation'() {
         given:
-            Person person = new Person("Tom", "Smith", -20)
+            Person person = new Person('Tom', 'Smith', -20)
         when:
             personController.addPerson(person)
         then:

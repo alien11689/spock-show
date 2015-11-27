@@ -7,8 +7,8 @@ class RequiresTest extends Specification {
 
 //    @Requires({os.windows})
 //    @Requires({os.linux})
-    @Requires({ System.getProperty("os.name").contains("windows") })
-    def "test 1"() {
+    @Requires({ System.getProperty('os.name').contains('windows') })
+    def 'test 1'() {
         expect:
             1 == 1
     }

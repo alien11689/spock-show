@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component
 
 @Component
 class PersonController {
-    final PersonValidator personValidator
-    final PersonDao personDao
+    private final PersonValidator personValidator
+    private final PersonDao personDao
 
     @Autowired
     PersonController(PersonValidator personValidator, PersonDao personDao) {

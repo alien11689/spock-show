@@ -7,18 +7,18 @@ import spock.lang.Unroll
 
 class ParametersFromDbTest extends Specification {
 
-    static Sql sql = Sql.newInstance("jdbc:h2:mem:", "sa", "", "org.h2.Driver")
+    static Sql sql = Sql.newInstance('jdbc:h2:mem:', 'sa', '', 'org.h2.Driver')
 
     def setupSpec() {
-        sql.execute("""DROP TABLE IF EXISTS person;
+        sql.execute('''DROP TABLE IF EXISTS person;
                         CREATE TABLE person (
                           first_name VARCHAR(256) NOT NULL,
                           last_name  VARCHAR(256) NOT NULL,
                           age        INT          NOT NULL
-                        );""")
-        sql.executeInsert("""INSERT INTO person (first_name, last_name, age) VALUES
+                        );''')
+        sql.executeInsert('''INSERT INTO person (first_name, last_name, age) VALUES
                                 ('Tom', 'Smith', 24),
-                                ('Jan', 'Kowalski', 30);""")
+                                ('Jan', 'Kowalski', 30);''')
     }
 
     def cleanupSpec() {
@@ -26,7 +26,7 @@ class ParametersFromDbTest extends Specification {
     }
 
     @Unroll
-    def "should set person data with #lastName, #firstName and #age"() {
+    def 'should set person data with #lastName, #firstName and #age'() {
         when:
             Person person = new Person(lastName: lastName, firstName: firstName, age: age)
         then:
@@ -34,11 +34,11 @@ class ParametersFromDbTest extends Specification {
             person.lastName == lastName
             person.age == age
         where:
-            [firstName, lastName, age] << sql.rows("SELECT * FROM person;")
+            [firstName, lastName, age] << sql.rows('SELECT * FROM person;')
     }
 
     @Unroll
-    def "should set person data with #lastName, #firstName and #age 2"() {
+    def 'should set person data with #lastName, #firstName and #age 2'() {
         when:
             Person person = new Person(lastName: lastName, firstName: firstName, age: age)
         then:
@@ -46,29 +46,29 @@ class ParametersFromDbTest extends Specification {
             person.lastName == lastName
             person.age == age
         where:
-            [firstName, lastName, age] << sql.rows("SELECT first_name, last_name, age FROM person;")
+            [firstName, lastName, age] << sql.rows('SELECT first_name, last_name, age FROM person;')
     }
 
     @Unroll
-    def "should set person data with #lastName and #firstName"() {
+    def 'should set person data with #lastName and #firstName'() {
         when:
             Person person = new Person(lastName: lastName, firstName: firstName)
         then:
             person.firstName == firstName
             person.lastName == lastName
         where:
-            [firstName, lastName] << sql.rows("SELECT * FROM person;")
+            [firstName, lastName] << sql.rows('SELECT * FROM person;')
     }
 
     @Unroll
-    def "should set person data with #lastName and #age"() {
+    def 'should set person data with #lastName and #age'() {
         when:
             Person person = new Person(lastName: lastName, age: age)
         then:
             person.lastName == lastName
             person.age == age
         where:
-            [_, lastName, age] << sql.rows("SELECT * FROM person;")
+            [_, lastName, age] << sql.rows('SELECT * FROM person;')
     }
 
 }

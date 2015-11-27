@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional
 
 @Component
 class PersonDao {
-    final JdbcTemplate jdbcTemplate
+    private final JdbcTemplate jdbcTemplate
 
     @Autowired
     PersonDao(JdbcTemplate jdbcTemplate) {
@@ -20,6 +20,7 @@ class PersonDao {
         jdbcTemplate.execute("Insert into person (first_name, last_name, age) values ('${person.firstName}', '${person.lastName}', ${person.age})")
     }
 
+    @Transactional
     void persist(List<Person> persons) {
         persons.each {
             persist(it)
@@ -27,12 +28,12 @@ class PersonDao {
     }
 
     List<Person> findByLastName(String lastName) {
-        jdbcTemplate.queryForList("select first_name, last_name, age from person where last_name = ?", [lastName] as Object[]).collect({
+        jdbcTemplate.queryForList('select first_name, last_name, age from person where last_name = ?', [lastName] as Object[]).collect {
             Map row -> new Person(row.first_name, row.last_name, row.age)
-        })
+        }
     }
 
     void close() {
-        println "Closing person dao"
+        println 'Closing person dao'
     }
 }
