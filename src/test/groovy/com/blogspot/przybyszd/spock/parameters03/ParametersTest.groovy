@@ -4,7 +4,7 @@ import com.blogspot.przybyszd.spock.dto.Person
 import spock.lang.Specification
 import spock.lang.Unroll
 
-
+@Unroll
 class ParametersTest extends Specification {
 
     @Unroll
@@ -21,7 +21,6 @@ class ParametersTest extends Specification {
             'Kowalski' | 'Jan'     | 24
     }
 
-    @Unroll
     def 'should set person data 2'(String firstName, String lastName, int age) {
         when:
             Person person = new Person(lastName: lastName, firstName: firstName, age: age)
@@ -35,7 +34,6 @@ class ParametersTest extends Specification {
             'Kowalski' | 'Jan'     | 24
     }
 
-    @Unroll
     def 'should set person with #lastName, #firstName and #age'() {
         when:
             Person person = new Person(lastName: lastName, firstName: firstName, age: age)
@@ -93,7 +91,6 @@ class ParametersTest extends Specification {
             firstLetter = lastName.charAt(0)
     }
 
-    @Unroll
     def 'should check if person is adult with table'() {
         expect:
             new Person(age: age).isAdult() == adult
@@ -104,7 +101,6 @@ class ParametersTest extends Specification {
             19  || true
     }
 
-    @Unroll
     def 'should check if person with age #person.age is adult => #adult'() {
         expect:
             person.isAdult() == adult
@@ -115,7 +111,6 @@ class ParametersTest extends Specification {
             new Person(age: 19) || true
     }
 
-    @Unroll
     def 'should check if person is adult with list'() {
         expect:
             new Person(age: age).isAdult() == adult
@@ -126,7 +121,6 @@ class ParametersTest extends Specification {
             ageSquare = age * age
     }
 
-    @Unroll
     def 'should check if person is adult with list 2'() {
         expect:
             new Person(age: age).isAdult() == adult
@@ -134,7 +128,6 @@ class ParametersTest extends Specification {
             [age, adult] << [[17,false], [18,true], [19, true]]
     }
 
-    @Unroll
     def 'should set first name'() {
         when:
             Person person = new Person(firstName: firstName)
