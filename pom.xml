@@ -16,7 +16,7 @@
         <spring.version>4.0.5.RELEASE</spring.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <h2.version>1.4.178</h2.version>
-        <spock.version>1.0-groovy-2.4</spock.version>
+        <spock.version>1.1-groovy-2.4-rc-1</spock.version>
         <cglib.version>3.1</cglib.version>
         <objenesis.version>2.1</objenesis.version>
         <gmavenplus-plugin.version>1.4</gmavenplus-plugin.version>
@@ -118,4 +118,11 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>sonatype</id>
+            <url>http://repository.sonatype.org/content/groups/public/</url>
+        </repository>
+    </repositories>
 </project>

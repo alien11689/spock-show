@@ -17,22 +17,22 @@ class ParametersTest extends Specification {
             person.age == age
         where:
             lastName   | firstName | age
-            'Smith'    |'John'    | 25
+            'Smith'    | 'John'    | 25
             'Kowalski' | 'Jan'     | 24
     }
 
-    def 'should set person data 2'(String firstName, String lastName, int age) {
-        when:
-            Person person = new Person(lastName: lastName, firstName: firstName, age: age)
-        then:
-            person.firstName == firstName
-            person.lastName == lastName
-            person.age == age
-        where:
-            lastName   | firstName | age
-            'Smith'    |'John'    | 25
-            'Kowalski' | 'Jan'     | 24
-    }
+//    def 'should set person data 2'(String firstName, String lastName, int age) {
+//        when:
+//            Person person = new Person(lastName: lastName, firstName: firstName, age: age)
+//        then:
+//            person.firstName == firstName
+//            person.lastName == lastName
+//            person.age == age
+//        where:
+//            lastName   | firstName | age
+//            'Smith'    | 'John'    | 25
+//            'Kowalski' | 'Jan'     | 24
+//    }
 
     def 'should set person with #lastName, #firstName and #age'() {
         when:
@@ -43,7 +43,7 @@ class ParametersTest extends Specification {
             person.age == age
         where:
             lastName   | firstName | age
-            'Smith'    |'John'    | 25
+            'Smith'    | 'John'    | 25
             'Kowalski' | 'Jan'     | 24
     }
 
@@ -57,7 +57,7 @@ class ParametersTest extends Specification {
             person.age == age
         where:
             lastName   | firstName | age
-            'Smith'    |'John'    | 25
+            'Smith'    | 'John'    | 25
             'Kowalski' | 'Jan'     | 24
     }
 
@@ -71,7 +71,7 @@ class ParametersTest extends Specification {
             person.age == age
         where:
             lastName   | firstName | age
-            'Smith'    |'John'    | 25
+            'Smith'    | 'John'    | 25
             'Kowalski' | 'Jan'     | 24
     }
 
@@ -85,7 +85,7 @@ class ParametersTest extends Specification {
             person.age == age
         where:
             lastName   | firstName | age
-            'Smith'    |'John'    | 25
+            'Smith'    | 'John'    | 25
             'Kowalski' | 'Jan'     | 24
 
             firstLetter = lastName.charAt(0)
@@ -125,7 +125,7 @@ class ParametersTest extends Specification {
         expect:
             new Person(age: age).isAdult() == adult
         where:
-            [age, adult] << [[17,false], [18,true], [19, true]]
+            [age, adult] << [[17, false], [18, true], [19, true]]
     }
 
     def 'should set first name'() {
@@ -135,7 +135,7 @@ class ParametersTest extends Specification {
             person.firstName == firstName
         where:
             firstName | _
-           'John'    | _
+            'John'    | _
             'Jan'     | _
     }
 }

@@ -36,6 +36,17 @@ class PersonTest extends Specification {
             person.age == 15
     }
 
+    def 'should set person data from constructor and verify all'() {
+        when:
+            Person person = new Person('Bob', 'Smith', 15)
+        then:
+            verifyAll {
+                person.firstName == 'Bob'
+                person.lastName == 'Smith'
+                person.age == 15
+            }
+    }
+
     def 'should set first name from constructor and change with setter'() {
         when:
             Person person = new Person(firstName: 'Bob')
