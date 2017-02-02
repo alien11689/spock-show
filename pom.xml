@@ -20,6 +20,7 @@
         <cglib.version>3.1</cglib.version>
         <objenesis.version>2.1</objenesis.version>
         <gmavenplus-plugin.version>1.4</gmavenplus-plugin.version>
+        <spock-genesis.version>0.6.0</spock-genesis.version>
     </properties>
 
     <build>
@@ -115,6 +116,13 @@
             <groupId>org.objenesis</groupId>
             <artifactId>objenesis</artifactId>
             <version>${objenesis.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.nagternal</groupId>
+            <artifactId>spock-genesis</artifactId>
+            <version>${spock-genesis.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
