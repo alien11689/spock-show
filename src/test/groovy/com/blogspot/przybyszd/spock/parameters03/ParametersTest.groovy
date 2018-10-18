@@ -21,19 +21,6 @@ class ParametersTest extends Specification {
             'Kowalski' | 'Jan'     | 24
     }
 
-    def 'should set person data 2'(String firstName, String lastName, int age) {
-        when:
-            Person person = new Person(lastName: lastName, firstName: firstName, age: age)
-        then:
-            person.firstName == firstName
-            person.lastName == lastName
-            person.age == age
-        where:
-            lastName   | firstName | age
-            'Smith'    |'John'    | 25
-            'Kowalski' | 'Jan'     | 24
-    }
-
     def 'should set person with #lastName, #firstName and #age'() {
         when:
             Person person = new Person(lastName: lastName, firstName: firstName, age: age)
