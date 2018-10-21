@@ -7,7 +7,7 @@ class PoolingConditionTest extends Specification {
 
     def 'should wait for job done'() {
         given:
-            PollingConditions pollingConditions = new PollingConditions(timeout: 5)
+            PollingConditions pollingConditions = new PollingConditions(timeout: 5, delay: 0.1)
             String response = null
         when:
             new Thread(new Runnable() {
